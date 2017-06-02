@@ -16,7 +16,7 @@ angular.module('app')
   .config(
     [          '$stateProvider', '$urlRouterProvider', 'JQ_CONFIG', 'MODULE_CONFIG', 
       function ($stateProvider,   $urlRouterProvider, JQ_CONFIG, MODULE_CONFIG) {
-          var layout = "test/tpl/app.html";
+          var layout = "html/angular/app.html";
           //$urlRouterProvider.otherwise('/dashboard');
           var timestamp = '?timestamp='+Math.floor(Date.now() / 1000);
           $stateProvider
@@ -27,9 +27,9 @@ angular.module('app')
               })
               .state('app.dashboard', {
                   url: '/dashboard',
-                  templateUrl: 'test/tpl/dashboard.html',
+                  templateUrl: 'html/angular/dashboard.html',
                   //template:"<h1>lalalalal</h1>",
-                  resolve: load(['test/controllers/dashboard.js'+timestamp])
+                  resolve: load(['js/angular/controllers/dashboard.js'+timestamp])
               })
              .state('layout', {
                   abstract: true,
