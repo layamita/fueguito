@@ -1,0 +1,20 @@
+app.factory('logginInterceptor', ['$q','$location' , function ($q,$location) {
+
+    return{
+        'response': function(response) {
+            console.log('Response',response.config.url);
+            return response;
+        },
+        responseError:function(rejection){
+            console.log("rejection!!!");
+            if(rejection.status === 401){
+                console.log("Response Error 401",rejection.config.url);
+                window.location = "/login";
+            }
+            return($q.reject(rejection));
+        }
+    }
+  
+}]).config(['$httpProvider', function($httpProvider) {  
+    $httpProvider.interceptors.push('logginInterceptor');
+}]);

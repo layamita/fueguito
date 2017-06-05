@@ -1,5 +1,16 @@
-/* Setup Layout Part - Header */
-angular.module('app').controller('HeaderController', ['$scope', function($scope) {
+'use strict';
+
+app.controller('HeaderController', ['$scope',  '$http', 
+                            function($scope,    $http) {
+        
+    $scope.logout = function(){
+        
+        $http.post('/logout').then(function(resp){
+            window.location = "/home";
+        });
+
+    };
+    
     $scope.$on('$includeContentLoaded', function() {
         Layout.initHeader(); // init header
     });

@@ -10,8 +10,7 @@ const { mix } = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-mix.copy('resources/assets/js/angular/controllers',     'public/js/angular/controllers',    false)
-mix.copy('resources/assets/html/angular',               'public/html/angular',              false)
+mix.copy('resources/views/angular/blocks', 'public/html/angular',  false)
 mix.styles([
     'http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all',
     'public/test/assets/global/plugins/bootstrap/css/bootstrap.min.css',
@@ -56,17 +55,19 @@ mix.scripts([
     'public/test/assets/layouts/global/scripts/quick-nav.js',
     //'public/test/assets/layouts/layout/scripts/demo.js', //Puede que se pueda quitar
     //Modulos
-    'resources/assets/js/angular/app.js',
+    'resources/views/angular/app.twig',
     //Directives
-    'resources/assets/js/angular/directives/directives.js',
+    'resources/views/angular/directives/directives.twig',
+    'resources/views/angular/config/router.twig',
+    'resources/views/angular/config/config.twig',
+    'resources/views/angular/main.twig', 
+    'resources/views/angular/config/lazyload.twig',
     //Controllers
-    'resources/assets/js/angular/controllers/controllers.js',
+    'resources/views/angular/controllers/controllers.twig',
+    //Interceptors
+    'resources/views/angular/interceptors/login.twig',
     //Services
     //'public/test1/services/user.js',
-    'resources/assets/js/angular/config.router.js',
-    'resources/assets/js/angular/config.js',
-    'resources/assets/js/angular/main.js', 
-    'resources/assets/js/angular/config.lazyload.js'
     ], 'public/js/all.js')
    //.sass('resources/assets/sass/app.scss', 'public/css')
     .version();

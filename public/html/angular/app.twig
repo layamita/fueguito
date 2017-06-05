@@ -6,13 +6,13 @@
     </div>
     <!-- END PAGE SPINNER -->
     <!-- BEGIN HEADER -->
-    <div data-ng-include="'html/angular/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top"> </div>
+    <div data-ng-include="'angular/blocks/header'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top"> </div>
     <!-- END HEADER -->
     <div class="clearfix"> </div>
     <!-- BEGIN CONTAINER -->
         <div class="page-container">
             <!-- BEGIN SIDEBAR -->
-            <div data-ng-include="'html/angular/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper"> </div>
+            <div data-ng-include="'angular/blocks/sidebar'" data-ng-controller="SidebarController" class="page-sidebar-wrapper"> </div>
             <!-- END SIDEBAR -->
             <!-- BEGIN CONTENT -->
             <div class="page-content-wrapper">
@@ -30,10 +30,10 @@
             <a href="javascript:;" class="page-quick-sidebar-toggler">
                 <i class="icon-login"></i>
             </a>
-            <div data-ng-include="'html/angular/quick-sidebar.html'" data-ng-controller="QuickSidebarController" class="page-quick-sidebar-wrapper"></div>
+            <div data-ng-include="'angular/blocks/quick_sidebar'" data-ng-controller="QuickSidebarController" class="page-quick-sidebar-wrapper"></div>
             <!-- END QUICK SIDEBAR -->
         </div>
         <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
-        <div data-ng-include="'html/angular/footer.html'" data-ng-controller="FooterController" class="page-footer"> </div>
+        <div data-ng-include="'angular/blocks/footer'" data-ng-controller="FooterController" class="page-footer"> </div>
         <!-- END FOOTER -->

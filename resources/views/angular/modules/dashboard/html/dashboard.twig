@@ -13,28 +13,10 @@
 
                   <form style="padding:10px" role="form" class="form-inline ng-pristine ng-valid">
                       <div class="form-group" style="width:100%; display: inline-block;">
-
-                          <span class="form-group" style="float:left;">
-                              <label style="float:left;padding-left:8px;">Period:&nbsp;</label>
-                              <input style="float:left;width: 160px;margin:-2px;" ui-jq="daterangepicker" ng-model="daterange" ng-change="changeDate()" ui-options="{
-                                  format: 'YYYY-MM-DD',
-                                  startDate:  '{{ "now"       |date("Y-m-01") }}',
-                                  endDate:    '{{ "now"       |date("Y-m-d") }}',
-                                  ranges: {
-                                          'Today':    ['{{ "now"       |date("Y-m-d") }}'  , '{{ "now"      |date("Y-m-d") }}'    ],
-                                      'Yesterday':    ['{{ "-1days"    |date("Y-m-d") }}'  , '{{ "-1days"   |date("Y-m-d") }}'    ],
-                                      'Last 7 Days':  ['{{ "-7days"    |date("Y-m-d") }}'  , '{{ "now"      |date("Y-m-d") }}'    ],
-                                      'Last 30 Days': ['{{ "-30days"   |date("Y-m-d") }}'  , '{{ "now"      |date("Y-m-d") }}'    ],
-                                      'This Month':   ['{{ "now"       |date("Y-m-01") }}' , '{{ "now"      |date("Y-m-d") }}'    ],
-                                      'Last Month':   ['{{ "-30days"   |date("Y-m-01") }}' , '{{ "-30days"  |date("Y-m-30")}}'    ]
-                                   }
-                                }" class="w-md" />
-                          </span>
-                            
-                            <span ng-show="admin" class="form-group" style="float:left;">
+                              <span ng-show="admin" class="form-group" style="float:left;">
                                 <label style="padding-left:8px;">Clients:</label>
                                 <select placeholder="Select Client"  class="w-md" ng-change="changeClient()" ng-model="selectedClient" style="width:230px;">
-                                     <option ng-repeat="client in clients" value="{{client.id_client}}">{{client.name}}</option>
+                                     <option ng-repeat="client in clients" value="">{{client.name}}</option>
                                 </select>
                             </span>
                                    
@@ -206,7 +188,7 @@
                   <small class="text-muted block">Total Bounces: {{respDashBox01.element.total_bounces}}</small>
                   <div class="inline">
                     <div ui-jq="easyPieChart"  ui-refresh="updateGraph" ui-options="{
-                              percent: {{respDashBox01.element.porB | number:2}},
+                              percent: {{respDashBox01.element.porB}},
                               lineWidth: 10,
                               trackColor: '#e8eff0',
                               barColor: '#10A7E8',
@@ -216,7 +198,7 @@
                               animate: 1000
                             }">
                       <div>
-                        <span class="h2 m-l-sm step">{{respDashBox01.element.porB | number:1}}</span>%
+                        <span class="h2 m-l-sm step">{{respDashBox01.element.porB }}</span>%
                         <div class="text text-sm">today</div>
                       </div>
                     </div>
@@ -233,7 +215,7 @@
                   <small class="text-muted block">Totales Openned: {{respDashBox01.element.total_openned}}</small>
                   <div class="inline">
                     <div ui-jq="easyPieChart"  ui-refresh="updateGraph" ui-options="{
-                              percent: {{respDashBox01.element.porAT | number:2}},
+                              percent: {{respDashBox01.element.porAT }},
                               lineWidth: 10,
                               trackColor: '#e8eff0',
                               barColor: '#27c24c',
@@ -243,7 +225,7 @@
                               animate: 1000
                             }">
                       <div>
-                        <span class="h2 m-l-sm step">{{respDashBox01.element.porAT | number:1}}</span>%
+                        <span class="h2 m-l-sm step">{{respDashBox01.element.porAT }}</span>%
                         <div class="text text-sm">today</div>
                       </div>
                     </div>
@@ -260,7 +242,7 @@
                   <small class="text-muted block">Total Clicks: {{respDashBox01.element.total_clicked}}</small>
                   <div class="inline">
                     <div ui-jq="easyPieChart" ui-refresh="updateGraph" ui-options="{
-                              percent: {{respDashBox01.element.porCT | number:2}},
+                              percent: {{respDashBox01.element.porCT }},
                               lineWidth: 10,
                               trackColor: '#e8eff0',
                               barColor: '#27c24c',
@@ -270,7 +252,7 @@
                               animate: 1000
                             }">
                       <div>
-                        <span class="h2 m-l-sm step">{{respDashBox01.element.porCT | number:1}}</span>%
+                        <span class="h2 m-l-sm step">{{respDashBox01.element.porCT }}</span>%
                         <div class="text text-sm">today</div>
                       </div>
                     </div>
@@ -290,7 +272,7 @@
                   
                   <div class="inline">
                     <div ui-jq="easyPieChart"  ui-refresh="updateGraph" ui-options="{
-                              percent: {{respDashBox01.element.porConv | number:2}},
+                              percent: {{respDashBox01.element.porConv }},
                               lineWidth: 10,
                               trackColor: '#e8eff0',
                               barColor: '#27c24c',
@@ -300,7 +282,7 @@
                               animate: 2000
                             }">
                       <div>
-                        <span class="h2 m-l-sm step">{{respDashBox01.element.porConv | number:1}}</span>%
+                        <span class="h2 m-l-sm step">{{respDashBox01.element.porConv }}</span>%
                         <div class="text text-sm">today</div>
                       </div>
                     </div>
@@ -402,27 +384,27 @@
                         <tbody>
                             <tr ng-repeat="element in respDashBox02.elements | orderBy:respDashBox02.predicate:respDashBox02.reverse">
                                 <td><strong>{{element.date}}<strong></td>
-                                <td ng-init="items.total.payout        = items.total.payout     + (1*element.total_payout)">{{element.total_payout || 0}}€</td>
-                                <td ng-init="items.total.deliveries    = items.total.deliveries + (1*element.total_deliveries)">{{element.total_deliveries || 0}}</td>
-                                <td ng-init="items.total.openned       = items.total.openned    + (1*element.total_openned)">{{element.total_openned || 0}}</td>
-                                <td>{{element.open_rate | number:2 || 0}}%</td>
-                                <td ng-init="items.total.clicked       = items.total.clicked    + (1*element.total_clicked)">{{element.total_clicked || 0}}</td>
-                                <td ng-init="items.total.ctr           = items.total.ctr        + (1*element.ctr)">{{element.ctr| number:2 || 0}}%</td>
-                                <td ng-init="items.total.epc           = items.total.epc        + (1*element.epc)">{{element.epc | number:2 || 0}}%</td>
-                                <td ng-init="items.total.epm           = items.total.epm        + (1*element.epm)">{{element.epm|number:2 || 0}}%</td>
+                                <td ng-init="items.total.payout        = items.total.payout     + (1*element.total_payout)">{{element.total_payout }}€</td>
+                                <td ng-init="items.total.deliveries    = items.total.deliveries + (1*element.total_deliveries)">{{element.total_deliveries }}</td>
+                                <td ng-init="items.total.openned       = items.total.openned    + (1*element.total_openned)">{{element.total_openned}}</td>
+                                <td>{{element.open_rate}}%</td>
+                                <td ng-init="items.total.clicked       = items.total.clicked    + (1*element.total_clicked)">{{element.total_clicked}}</td>
+                                <td ng-init="items.total.ctr           = items.total.ctr        + (1*element.ctr)">{{element.ctr}}%</td>
+                                <td ng-init="items.total.epc           = items.total.epc        + (1*element.epc)">{{element.epc}}%</td>
+                                <td ng-init="items.total.epm           = items.total.epm        + (1*element.epm)">{{element.epm}}%</td>
                             </tr>
                       </tbody>
                       <tfoot>
                           <tr class="footer_table table_ th">
                             <td><strong>Total:</strong></td>
-                            <td><strong>{{items.total.payout | number:2}}€<strong></td>
-                            <td><strong>{{items.total.deliveries | number }}<strong></td>
-                            <td><strong>{{items.total.openned | number }}<strong></td>
-                            <td><strong>{{((items.total.openned*100)/items.total.deliveries) | number:2 }}%<strong></td>
-                            <td><strong>{{items.total.clicked|number }}<strong></td>
-                            <td><strong>{{((items.total.clicked*100)/items.total.openned) | number:2 }}%<strong></td>
-                            <td><strong>{{items.total.epc | number:2 }}%<strong></td>
-                            <td><strong>{{items.total.epm | number:2 }}%<strong></td>
+                            <td><strong>{{items.total.payout}}€<strong></td>
+                            <td><strong>{{items.total.deliveries}}<strong></td>
+                            <td><strong>{{items.total.openned }}<strong></td>
+                            <td><strong>%<strong></td>
+                            <td><strong>{{items.total.clicked}}<strong></td>
+                            <td><strong>%<strong></td>
+                            <td><strong>{{items.total.epc }}%<strong></td>
+                            <td><strong>{{items.total.epm }}%<strong></td>
                           </tr>
                         </tfoot>
                     </table>
