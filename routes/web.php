@@ -19,3 +19,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/angular/modules/{pathToFile}','ViewsController@module');
 Route::get('/angular/blocks/{pathToFile}','ViewsController@block');
+
+
+
+
