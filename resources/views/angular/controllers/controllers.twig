@@ -1,8 +1,16 @@
 'use strict';
 
-app.controller('HeaderController', ['$scope',  '$http', '$location',
-                            function($scope,    $http,  $location) {
+app.controller('HeaderController', ['$scope',  '$http', '$location','APIService',
+                            function($scope,    $http,  $location, APIService) {
 
+    
+    // First way of creating a Restangular object. Just saying the base URL
+    var baseAccounts = APIService.all('accounts');
+
+    // This will query /accounts and return a promise.
+    baseAccounts.getList().then(function(accounts) {
+        $scope.allAccounts = accounts;
+    });
     
     $scope.logout = function(){
         $http.post('/logout').then(function(resp){
