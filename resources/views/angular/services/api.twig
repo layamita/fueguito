@@ -13,7 +13,14 @@ app.factory('APIService', ['Restangular','$window','toaster',function(Restangula
         .setDefaultHeaders(headers)
         .setErrorInterceptor(function (response) {
           if (response.status === 404) {
-              toaster.pop('info', "Ups!", response.config.url+' '+response.statusText);
+              //toaster.pop('info', "Ups!", response.config.url+' '+response.statusText);
+              toaster.pop({
+                  type:'error',
+                  title:'Ups!',
+                  body: response.config.url+' '+response.statusText,
+                  //timeout:2000,
+                  //showCloseButton: true
+              });
           }
           if (response.status === 422) {
             // for (var error in response.data.errors) {

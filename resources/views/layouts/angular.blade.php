@@ -15,6 +15,7 @@
     <link href="test/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="test/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ mix('/css/all.css') }}">
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     
     
 </head>
