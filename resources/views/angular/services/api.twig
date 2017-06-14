@@ -12,14 +12,15 @@ app.factory('APIService', ['Restangular','$window','toaster',function(Restangula
         .setBaseUrl('/api/')
         .setDefaultHeaders(headers)
         .setErrorInterceptor(function (response) {
+          if (response.status === 401 ) {
+            console.log('error 401 :: '+response.statusText);
+            window.location = "/login"
+          }
           if (response.status === 404) {
-              //toaster.pop('info', "Ups!", response.config.url+' '+response.statusText);
               toaster.pop({
                   type:'error',
                   title:'Ups!',
                   body: response.config.url+' '+response.statusText,
-                  //timeout:2000,
-                  //showCloseButton: true
               });
           }
           if (response.status === 422) {
@@ -35,9 +36,10 @@ app.factory('APIService', ['Restangular','$window','toaster',function(Restangula
           }
         })
         .addResponseInterceptor(function (response, operation, what) {
+          
           if (operation === 'getList') {
-            var newResponse = response.data[what]
-            newResponse.error = response.error
+            var newResponse = response.data
+            //newResponse.error = response.error
             return newResponse
           }
 

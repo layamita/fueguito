@@ -5,13 +5,8 @@ app.controller('HeaderController', ['$scope',  '$http', '$location','APIService'
 
     
     // First way of creating a Restangular object. Just saying the base URL
-    var baseAccounts = APIService.all('accounts');
+    //var baseAccounts = APIService.all('user');
 
-    // This will query /accounts and return a promise.
-    baseAccounts.getList().then(function(accounts) {
-        $scope.allAccounts = accounts;
-    });
-    
     $scope.logout = function(){
         $http.post('/logout').then(function(resp){
             window.location = "/home";

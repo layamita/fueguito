@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('app')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', '$http',
-    function ($scope, $translate, $localStorage, $window, $http) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'APIService',
+    function ($scope, $translate, $localStorage, $window, APIService) {
 
 
       $scope.isSmartDevice = function ($window) {
@@ -13,13 +13,9 @@ angular.module('app')
       }
 
       $scope.setUserData = function () {
-        
-        $http.post('/user/status').then(function(response){
-
-        })
-
-        $scope.user = {};
-        $scope.user.nick = 'Lalo';
+          APIService.all("user").getList().then(function(user){
+                $scope.user = user[0];
+          });
       }
 
       $scope.setAppData = function () {

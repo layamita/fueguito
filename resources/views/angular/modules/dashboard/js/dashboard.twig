@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('DashboardCtrl', ['$scope', '$state', '$http',
-                        function( $scope,   $state,   $http) {
+app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
+                        function( $scope,   $state,   $http, APIService) {
     
     $scope.respRevenue           = {};
     $scope.respDashBox01         = {};
@@ -16,6 +16,18 @@ app.controller('DashboardCtrl', ['$scope', '$state', '$http',
     $scope.clients               = [];
     $scope.items                 = {};
     $scope.admin                 = false;
+
+    $scope.test = function(){
+
+        APIService.all("user").getList().then(function(user){
+                console.log(user[0].name);
+            });
+
+        
+    }
+
+        
+
     
     $scope.resetRevenue = function(){
         $scope.respRevenue.element   = {'today':0, 'actual_month':0, 'last_month':0};
