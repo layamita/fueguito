@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Providers;
-
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -24,6 +23,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('League\Fractal\Manager', function ($app) {
+            $manager = new \League\Fractal\Manager;
+
+            // Use the serializer of your choice.
+            $manager->setSerializer(new \League\Fractal\Serializer\DataArraySerializer());
+
+            return $manager;
+        });
+
+        //dd($this->app->make('twig'));
     }
 }

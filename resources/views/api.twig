@@ -11,7 +11,6 @@ app.factory('APIService', ['Restangular','$window','toaster',function(Restangula
       RestangularConfigurer
         .setBaseUrl('/api/')
         .setDefaultHeaders(headers)
-        .setFullResponse(true)
         .setErrorInterceptor(function (response) {
           if (response.status === 401 ) {
             console.log('error 401 :: '+response.statusText);
@@ -44,13 +43,7 @@ app.factory('APIService', ['Restangular','$window','toaster',function(Restangula
             return newResponse
           }
 
-          if(operation === 'get'){
-            var newResponse = response.data
-            //newResponse.error = response.error
-            return newResponse
-          }
-
-          return newResponse
+          return response
         })
     })
 

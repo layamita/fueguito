@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Twig;
 use Auth;
 
+
 class ViewsController extends Controller
 {
     /**
@@ -35,6 +36,22 @@ class ViewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function sidebar()
+    {
+        $this->file_request = 'sidebar';
+        $this->base_path    = 'angular/blocks/';
+
+        $user = Auth::user();
+
+        return($this->getResponse(['user' => $user]));
+    }
+
+
+    /**
+     * Show template.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function block($pathToFile)
     {
         $this->file_request = $pathToFile;
@@ -42,11 +59,11 @@ class ViewsController extends Controller
         return($this->getResponse());
     }
     
-    private function getResponse(){
+    private function getResponse($vars = []){
         
         if (Auth::check()) {
             $this->setPath();
-            $response = response(Twig::render($this->base_path.$this->path),200);
+            $response = response(Twig::render($this->base_path.$this->path,$vars),200);
         }else{
             $response = response("acces denied",403);
         }

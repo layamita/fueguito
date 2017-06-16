@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\MaxMind\ImportFiles::class
+        Commands\MaxMind\ImportFiles::class,
+        Commands\Users\Permissions::class,
     ];
 
     /**

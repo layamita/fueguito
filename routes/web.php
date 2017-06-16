@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/angular/modules/{pathToFile}','ViewsController@module');
+Route::get('angular/blocks/sidebar','ViewsController@sidebar');
 Route::get('/angular/blocks/{pathToFile}','ViewsController@block');
 Route::get('/api/user','Api\UserController@getLogued')->middleware('auth');
 

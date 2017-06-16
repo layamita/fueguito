@@ -27,12 +27,14 @@
             </form>
             <!-- END RESPONSIVE QUICK SEARCH FORM -->
         </li>
+        {% if user.hasRole('writer') %}
         <li class="start nav-item">
             <a ui-sref="app.dashboard">
                 <i class="icon-home"></i>
                 <span class="title">Dashboard</span>
             </a>
         </li>
+        {% endif%}
         <li class="nav-item">
             <a href="#" class="nav-link nav-toggle">
                 <i class="icon-settings"></i>

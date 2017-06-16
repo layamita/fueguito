@@ -168,6 +168,8 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        TwigBridge\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -177,9 +179,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        /*TwigBridge Service Provider*/
-        TwigBridge\ServiceProvider::class,
-
     ],
 
     /*
@@ -229,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Twig' => TwigBridge\Facade\Twig::class,
+        
     ],
 
 ];

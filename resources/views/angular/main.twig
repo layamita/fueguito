@@ -13,8 +13,8 @@ angular.module('app')
       }
 
       $scope.setUserData = function () {
-          APIService.all("user").getList().then(function(user){
-                $scope.user = user[0];
+          APIService.all("user").get('').then(function(user){
+            $scope.user = user.data;
           });
       }
 
