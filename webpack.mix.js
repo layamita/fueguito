@@ -14,13 +14,11 @@ mix.copy('resources/views/angular/blocks', 'public/html/angular',  false)
 mix.styles([
     'http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all',
     'public/test/assets/global/plugins/bootstrap/css/bootstrap.min.css',
-    //'public/test/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
     'node_modules/bootstrap-switch/dist/css/bootstrap2/bootstrap-switch.min.css',
-    'public/test/assets/global/css/components.min.css',
-    'public/test/assets/global/css/plugins.min.css',
-    'public/test/assets/layouts/layout/css/layout.min.css',
-    'public/test/assets/layouts/layout/css/themes/darkblue.min.css',
-    'public/test/assets/layouts/layout/css/custom.min.css',
+    'public/assets/global/css/components.min.css',
+    'public/assets/global/css/plugins.min.css',
+    'public/assets/layout/layout/css/layout.min.css',
+    'public/assets/layout/layout/css/themes/darkblue.min.css',
     'node_modules/angular-material/angular-material.min.css',
     'node_modules/angularjs-toaster/toaster.min.css'
 ], 'public/css/all.css')
@@ -43,7 +41,6 @@ mix.scripts([
     'node_modules/angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
     'node_modules/angular-translate/dist/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
     'node_modules/angular-translate/dist/angular-translate-storage-local/angular-translate-storage-local.js',
-    
     'bower_components/ngstorage/ngStorage.js',
     'node_modules/angular-ui-router/release/angular-ui-router.min.js',
     'bower_components/oclazyload/dist/ocLazyLoad.js',
@@ -51,11 +48,11 @@ mix.scripts([
     'node_modules/restangular/dist/restangular.js',
     'public/test/assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js',
     //BEGIN APP LEVEL JQUERY SCRIPTS
-    'public/test/assets/global/scripts/app.js',
-    'public/test/assets/layouts/layout/scripts/layout.js',
-    'public/test/assets/layouts/global/scripts/quick-sidebar.js',
-    'public/test/assets/layouts/global/scripts/quick-nav.js',
-    //'public/test/assets/layouts/layout/scripts/demo.js', //Puede que se pueda quitar
+    //'public/test/assets/global/scripts/app.js',
+    'public/assets/global/scripts/app.js',
+    'public/assets/layout/layout/scripts/layout.js',
+    'public/assets/layout/global/scripts/quick-sidebar.min.js',
+    'public/assets/layout/global/scripts/quick-nav.min.js',
     //Modulos
     'resources/views/angular/app.twig',
     //Directives

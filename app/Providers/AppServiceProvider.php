@@ -32,6 +32,9 @@ class AppServiceProvider extends ServiceProvider
             return $manager;
         });
 
-        //dd($this->app->make('twig'));
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(\Way\Generators\GeneratorsServiceProvider::class);
+            $this->app->register(\Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class);
+        }
     }
 }

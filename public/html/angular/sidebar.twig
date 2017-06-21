@@ -27,7 +27,7 @@
             </form>
             <!-- END RESPONSIVE QUICK SEARCH FORM -->
         </li>
-        {% if user.hasRole('writer') %}
+        {% if user.hasPermissionTo('view_dashboards') %}
         <li class="start nav-item">
             <a ui-sref="app.dashboard">
                 <i class="icon-home"></i>
@@ -38,27 +38,20 @@
         <li class="nav-item">
             <a href="#" class="nav-link nav-toggle">
                 <i class="icon-settings"></i>
-                <span class="title">AngularJS Features</span>
+                <span class="title">Admin Elements</span>
                 <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
+                {% if user.hasPermissionTo('view_campaigns') %}
                 <li>
-                    <a ui-sref="">
-                        <i class="icon-puzzle"></i> UI Bootstrap</span>
+                    <a ui-sref="app.campaigns">
+                        <i class="icon-puzzle"></i>Campaigns</span>
                     </a>
                 </li>
-                <li>
-                    <a ui-sref="fileupload">
-                        <i class="icon-paper-clip"></i> File Upload</span>
-                    </a>
-                </li>
-                <li>
-                    <a ui-sref="uiselect">
-                        <i class="icon-check"></i> UI Select</span>
-                    </a>
-                </li>
+                {% endif %}
             </ul>
         </li>
+        {% if(false) %}
         <li class="nav-item">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="icon-wrench"></i>
@@ -118,6 +111,7 @@
                 <span class="title">Blank Page</span>
             </a>
         </li>
+        {% endif %}
     </ul>
     <!-- END SIDEBAR MENU -->
 </div>

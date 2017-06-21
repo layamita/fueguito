@@ -21,7 +21,17 @@
   },
   "dependencies": {
     "angular": "^1.6.4",
+    "angular-animate": "^1.6.4",
+    "angular-aria": "^1.6.4",
+    "angular-material": "^1.1.4",
+    "angular-slimscroll": "^1.0.0",
+    "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^1.0.3",
-    "angularjs-toaster": "^2.1.0"
+    "angularjs-toaster": "^2.1.0",
+    "bootstrap": "^3.3.7",
+    "bootstrap-hover-dropdown": "^2.2.1",
+    "bootstrap-switch": "^3.3.4",
+    "restangular": "^1.6.1",
+    "underscore": "^1.8.3"
   }
 }

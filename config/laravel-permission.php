@@ -95,4 +95,6 @@ return [
      */
 
     'log_registration_exception' => true,
+
+    'cache_expiration_time'     => 1
 ];

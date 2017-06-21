@@ -6,7 +6,6 @@ app.controller('HeaderController', ['$scope',  '$http', '$location',
     
     // First way of creating a Restangular object. Just saying the base URL
     //var baseAccounts = APIService.all('user');
-
     $scope.logout = function(){
         $http.post('/logout').then(function(resp){
             window.location = "/home";
@@ -14,7 +13,7 @@ app.controller('HeaderController', ['$scope',  '$http', '$location',
     };
     
     $scope.$on('$includeContentLoaded', function() {
-        Layout.initHeader(); // init header
+    //    Layout.initHeader(); // init header
     });
 
     $location.path("/dashboard");

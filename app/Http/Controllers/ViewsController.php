@@ -42,7 +42,6 @@ class ViewsController extends Controller
         $this->base_path    = 'angular/blocks/';
 
         $user = Auth::user();
-
         return($this->getResponse(['user' => $user]));
     }
 

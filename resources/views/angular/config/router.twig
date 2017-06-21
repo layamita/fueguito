@@ -29,6 +29,11 @@ angular.module('app')
                   templateUrl: 'angular/modules/dashboard-dashboard.html',
                   resolve: load(['angular/modules/dashboard-dashboard.js'+timestamp])
               })
+              .state('app.campaigns', {
+                  url: '/campaign',
+                  templateUrl: 'angular/modules/campaign-campaign.html',
+                  resolve: load(['angular/modules/campaign-campaign.js'+timestamp])
+              })
              .state('layout', {
                   abstract: true,
                   url: '/layout',

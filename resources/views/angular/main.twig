@@ -13,9 +13,9 @@ angular.module('app')
       }
 
       $scope.setUserData = function () {
-          APIService.all("user").get('').then(function(user){
-            $scope.user = user.data;
-          });
+        APIService.all("user").get('').then(function (user) {
+          $scope.user = user.data;
+        });
       }
 
       $scope.setAppData = function () {
@@ -23,6 +23,7 @@ angular.module('app')
         $scope.app = {
           name: 'Fueguito',
           version: '1.0.0',
+          client: 'Glimmer Media',
           // for chart colors
           color: {
             primary: '#7266ba',
@@ -35,7 +36,7 @@ angular.module('app')
             black: '#1c2b36'
           },
           settings: {
-            themeID: 1,
+            themeID: 2,
             navbarHeaderColor: 'bg-black',
             navbarCollapseColor: 'bg-white-only',
             asideColor: 'bg-black',
@@ -47,7 +48,8 @@ angular.module('app')
             viewPath: '../',
             assetsPath: '../assets',
             globalPath: '../assets/global',
-            layoutPath: '../assets/layouts/layout'
+            layoutPath: '../assets/layouts/layout',
+            logo: '/images/logo_glimmer.gif'
           },
           layout: {
             pageSidebarClosed: false, // sidebar menu state
@@ -70,11 +72,17 @@ angular.module('app')
 
       // config
       // save settings to local storage
+      /*
       if (angular.isDefined($localStorage.settings)) {
         $scope.app.settings = $localStorage.settings;
       } else {
         $localStorage.settings = $scope.app.settings;
+      }*/
+
+      if (!angular.isDefined($localStorage.settings)) {
+        $localStorage.settings = $scope.app.settings;
       }
+
       $scope.$watch('app.settings', function () {
         if ($scope.app.settings.asideDock && $scope.app.settings.asideFixed) {
           // aside dock and fixed must set the header fixed.
