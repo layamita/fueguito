@@ -28,16 +28,9 @@ mix.sass('resources/assets/sass/app.scss', 'public/css');
 mix.scripts([
     //BEGIN CORE JQUERY PLUGINS
     'bower_components/jquery/dist/jquery.min.js',
-    //'public/test/assets/global/plugins/bootstrap/js/bootstrap.min.js',
     'node_modules/bootstrap/dist/js/bootstrap.min.js',
-    //'public/test/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js',
     'node_modules/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js',
-    //'public/test/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js',
-    'node_modules/jquery-slimscroll/jquery.slimscroll.min.js',
-    //'public/test/assets/global/plugins/jquery.blockui.min.js',
-    //'public/test/assets/global/plugins/js.cookie.min.js',
-    //'public/test/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
-    //'/Users/guillermoallendes/Sites/fueguito2/node_modules/bootstrap-switch/dist/js/bootstrap-switch.min.js',
+    'public/test/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js',
     //END CORE JQUERY PLUGINS
     //'public/js/vendor.js',
     'node_modules/angular/angular.min.js',
@@ -45,22 +38,13 @@ mix.scripts([
     'node_modules/angular-aria/angular-aria.min.js',
     'node_modules/angular-material/angular-material.min.js',
     'node_modules/angularjs-toaster/toaster.js',
-    //'public/js/app.js',
     'bower_components/angular-cookies/angular-cookies.js',
-    /*
-    al pasar a angular 1.6.4, da error por metodos deprecados
-    'bower_components/angular-translate/angular-translate.js',
-    'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
-    'bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
-    'bower_components/angular-translate-storage-local/angular-translate-storage-local.js',
-    */
     'node_modules/angular-translate/dist/angular-translate.js',
     'node_modules/angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
     'node_modules/angular-translate/dist/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
     'node_modules/angular-translate/dist/angular-translate-storage-local/angular-translate-storage-local.js',
     
     'bower_components/ngstorage/ngStorage.js',
-    //'bower_components/angular-ui-router/release/angular-ui-router.js',
     'node_modules/angular-ui-router/release/angular-ui-router.min.js',
     'bower_components/oclazyload/dist/ocLazyLoad.js',
     'node_modules/underscore/underscore-min.js',
@@ -83,10 +67,8 @@ mix.scripts([
     //Controllers
     'resources/views/angular/controllers/controllers.twig',
     //Interceptors
-    //'resources/views/angular/interceptors/login.twig',
     //Services
     'resources/views/angular/services/api.twig',
-    //'public/test1/services/user.js',
     ], 'public/js/all.js')
    //.sass('resources/assets/sass/app.scss', 'public/css')
     .version();
