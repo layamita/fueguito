@@ -20,7 +20,10 @@ mix.styles([
     'public/assets/layout/layout/css/layout.min.css',
     'public/assets/layout/layout/css/themes/darkblue.min.css',
     'node_modules/angular-material/angular-material.min.css',
-    'node_modules/angularjs-toaster/toaster.min.css'
+    'node_modules/angularjs-toaster/toaster.min.css',
+    'node_modules/select2/dist/css/select2.min.css',
+    'node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css',
+    'node_modules/datatables.net-bs/css/dataTables.bootstrap.css',
 ], 'public/css/all.css')
 mix.sass('resources/assets/sass/app.scss', 'public/css');
 mix.scripts([
@@ -28,7 +31,8 @@ mix.scripts([
     'bower_components/jquery/dist/jquery.min.js',
     'node_modules/bootstrap/dist/js/bootstrap.min.js',
     'node_modules/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js',
-    'public/test/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js',
+    'public/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js',
+    'node_modules/select2/dist/js/select2.full.js',
     //END CORE JQUERY PLUGINS
     //'public/js/vendor.js',
     'node_modules/angular/angular.min.js',

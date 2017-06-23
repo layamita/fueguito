@@ -1,234 +1,232 @@
-<div class="portlet box red">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="fa fa-gift"></i>Repeating Forms </div>
-                                <div class="tools">
-                                    <a href="javascript:;" class="collapse"> </a>
-                                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                    <a href="javascript:;" class="reload"> </a>
-                                    <a href="javascript:;" class="remove"> </a>
-                                </div>
+<div ng-controller="CampaignCtrl" class="portlet box red">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>Filter Option's</div>
+        <div class="tools" ng-init="show=true">
+            <a href="#" ng-click="show = !show" class="collapse"> </a>
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <div class="form-body">
+            <div class="form-group">
+                <form action="#" class="mt-repeater form-horizontal">
+                    <div data-repeater-list="group-a">
+                        <div data-repeater-item class="mt-repeater-item">
+                            <!-- jQuery Repeater Container -->
+                            <div class="mt-repeater-input">
+                                <label class="control-label">ID</label>
+                                <br/>
+                                <input type="text" name="text-input" width="100px" class="form-control" /> </div>
+                            <div class="mt-repeater-input">
+                                <label class="control-label">Name</label>
+                                <br/>
+                                <select id="select2-button-addons-single-input-group-sm" class="form-control js-data-example-ajax" dir="rtl">
+                                    
+                                </select>
                             </div>
-                            <div class="portlet-body form">
-                                <div class="form-body">
-                                    <div class="form-group">
-                                        <form action="#" class="mt-repeater form-horizontal">
-                                            <h3 class="mt-repeater-title">Human Resource Management</h3>
-                                            <div data-repeater-list="group-a">
-                                                <div data-repeater-item class="mt-repeater-item">
-                                                    <!-- jQuery Repeater Container -->
-                                                    <div class="mt-repeater-input">
-                                                        <label class="control-label">Name</label>
-                                                        <br/>
-                                                        <input type="text" name="text-input" class="form-control" value="John Smith" /> </div>
-                                                    <div class="mt-repeater-input">
-                                                        <label class="control-label">Joined Date</label>
-                                                        <br/>
-                                                        <input class="input-group form-control form-control-inline date date-picker" size="16" type="text" value="01/08/2016" name="date-input" data-date-format="dd/mm/yyyy" /> </div>
-                                                    <div class="mt-repeater-input mt-repeater-textarea">
-                                                        <label class="control-label">Job Description</label>
-                                                        <br/>
-                                                        <textarea name="textarea-input" class="form-control" rows="3">This role is to follow up with all meetings and ensure that each operational process flow moves accordingly in a timely manner.</textarea>
-                                                    </div>
-                                                    <div class="mt-repeater-input mt-radio-inline">
-                                                        <label class="control-label">Tier</label>
-                                                        <br/>
-                                                        <label class="mt-radio">
-                                                            <input type="radio" name="optionsRadios" id="optionsRadios25" value="junior" checked=""> Junior
-                                                            <span></span>
-                                                        </label>
-                                                        <label class="mt-radio">
-                                                            <input type="radio" name="optionsRadios" id="optionsRadios26" value="senior" checked=""> Senior
-                                                            <span></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="mt-repeater-input mt-checkbox-inline">
-                                                        <label class="control-label">Language</label>
-                                                        <br/>
-                                                        <label class="mt-checkbox">
-                                                            <input type="checkbox" id="inlineCheckbox21" value="option1"> English
-                                                            <span></span>
-                                                        </label>
-                                                        <label class="mt-checkbox">
-                                                            <input type="checkbox" id="inlineCheckbox22" value="option2"> French
-                                                            <span></span>
-                                                        </label>
-                                                    </div>
-                                                    <div class="mt-repeater-input">
-                                                        <label class="control-label">Department</label>
-                                                        <br/>
-                                                        <select name="select-input" class="form-control">
-                                                            <option value="A" selected>Marketing</option>
-                                                            <option value="B">Creative</option>
-                                                            <option value="C">Development</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mt-repeater-input">
-                                                        <a href="javascript:;" data-repeater-delete class="btn btn-danger mt-repeater-delete">
-                                                            <i class="fa fa-close"></i> Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
-                                                <i class="fa fa-plus"></i> Add</a>
-                                        </form>
-                                    </div>
-                                </div>
+                            <div class="mt-repeater-input">
+                                <label class="control-label">Status</label>
+                                <br/>
+                                <select name="select-input" class="form-control">
+                                    <option value="A" selected>Marketing</option>
+                                    <option value="B">Creative</option>
+                                    <option value="C">Development</option>
+                                </select>
                             </div>
                         </div>
+                    </div>
+                    <a href="javascript:;" data-repeater-create class="btn btn-success mt-repeater-add">
+                        <i class="fa fa-search"></i> Search</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <!-- BEGIN SAMPLE TABLE PORTLET-->
-                                <div class="portlet box green">
-                                    <div class="portlet-title">
-                                        <div class="caption">
-                                            <i class="fa fa-cogs"></i>Responsive Flip Scroll Tables </div>
-                                        <div class="tools">
-                                            <a href="javascript:;" class="collapse"> </a>
-                                            <a href="#portlet-config" data-toggle="modal" class="config"> </a>
-                                            <a href="javascript:;" class="reload"> </a>
-                                            <a href="javascript:;" class="remove"> </a>
-                                        </div>
-                                    </div>
-                                    <div class="portlet-body flip-scroll">
-                                        <table class="table table-bordered table-striped table-condensed flip-content">
-                                            <thead class="flip-content">
-                                                <tr>
-                                                    <th width="20%"> Code </th>
-                                                    <th> Company </th>
-                                                    <th class="numeric"> Price </th>
-                                                    <th class="numeric"> Change </th>
-                                                    <th class="numeric"> Change % </th>
-                                                    <th class="numeric"> Open </th>
-                                                    <th class="numeric"> High </th>
-                                                    <th class="numeric"> Low </th>
-                                                    <th class="numeric"> Volume </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td> AAC </td>
-                                                    <td> AUSTRALIAN AGRICULTURAL COMPANY LIMITED. </td>
-                                                    <td class="numeric"> &nbsp; </td>
-                                                    <td class="numeric"> -0.01 </td>
-                                                    <td class="numeric"> -0.36% </td>
-                                                    <td class="numeric"> $1.39 </td>
-                                                    <td class="numeric"> $1.39 </td>
-                                                    <td class="numeric"> &nbsp; </td>
-                                                    <td class="numeric"> 9,395 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> AAD </td>
-                                                    <td> ARDENT LEISURE GROUP </td>
-                                                    <td class="numeric"> $1.15 </td>
-                                                    <td class="numeric"> +0.02 </td>
-                                                    <td class="numeric"> 1.32% </td>
-                                                    <td class="numeric"> $1.14 </td>
-                                                    <td class="numeric"> $1.15 </td>
-                                                    <td class="numeric"> $1.13 </td>
-                                                    <td class="numeric"> 56,431 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> AAX </td>
-                                                    <td> AUSENCO LIMITED </td>
-                                                    <td class="numeric"> $4.00 </td>
-                                                    <td class="numeric"> -0.04 </td>
-                                                    <td class="numeric"> -0.99% </td>
-                                                    <td class="numeric"> $4.01 </td>
-                                                    <td class="numeric"> $4.05 </td>
-                                                    <td class="numeric"> $4.00 </td>
-                                                    <td class="numeric"> 90,641 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> ABC </td>
-                                                    <td> ADELAIDE BRIGHTON LIMITED </td>
-                                                    <td class="numeric"> $3.00 </td>
-                                                    <td class="numeric"> +0.06 </td>
-                                                    <td class="numeric"> 2.04% </td>
-                                                    <td class="numeric"> $2.98 </td>
-                                                    <td class="numeric"> $3.00 </td>
-                                                    <td class="numeric"> $2.96 </td>
-                                                    <td class="numeric"> 862,518 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> ABP </td>
-                                                    <td> ABACUS PROPERTY GROUP </td>
-                                                    <td class="numeric"> $1.91 </td>
-                                                    <td class="numeric"> 0.00 </td>
-                                                    <td class="numeric"> 0.00% </td>
-                                                    <td class="numeric"> $1.92 </td>
-                                                    <td class="numeric"> $1.93 </td>
-                                                    <td class="numeric"> $1.90 </td>
-                                                    <td class="numeric"> 595,701 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> ABY </td>
-                                                    <td> ADITYA BIRLA MINERALS LIMITED </td>
-                                                    <td class="numeric"> $0.77 </td>
-                                                    <td class="numeric"> +0.02 </td>
-                                                    <td class="numeric"> 2.00% </td>
-                                                    <td class="numeric"> $0.76 </td>
-                                                    <td class="numeric"> $0.77 </td>
-                                                    <td class="numeric"> $0.76 </td>
-                                                    <td class="numeric"> 54,567 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> ACR </td>
-                                                    <td> ACRUX LIMITED </td>
-                                                    <td class="numeric"> $3.71 </td>
-                                                    <td class="numeric"> +0.01 </td>
-                                                    <td class="numeric"> 0.14% </td>
-                                                    <td class="numeric"> $3.70 </td>
-                                                    <td class="numeric"> $3.72 </td>
-                                                    <td class="numeric"> $3.68 </td>
-                                                    <td class="numeric"> 191,373 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> ADU </td>
-                                                    <td> ADAMUS RESOURCES LIMITED </td>
-                                                    <td class="numeric"> $0.72 </td>
-                                                    <td class="numeric"> 0.00 </td>
-                                                    <td class="numeric"> 0.00% </td>
-                                                    <td class="numeric"> $0.73 </td>
-                                                    <td class="numeric"> $0.74 </td>
-                                                    <td class="numeric"> $0.72 </td>
-                                                    <td class="numeric"> 8,602,291 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> AGG </td>
-                                                    <td> ANGLOGOLD ASHANTI LIMITED </td>
-                                                    <td class="numeric"> $7.81 </td>
-                                                    <td class="numeric"> -0.22 </td>
-                                                    <td class="numeric"> -2.74% </td>
-                                                    <td class="numeric"> $7.82 </td>
-                                                    <td class="numeric"> $7.82 </td>
-                                                    <td class="numeric"> $7.81 </td>
-                                                    <td class="numeric"> 148 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> AGK </td>
-                                                    <td> AGL ENERGY LIMITED </td>
-                                                    <td class="numeric"> $13.82 </td>
-                                                    <td class="numeric"> +0.02 </td>
-                                                    <td class="numeric"> 0.14% </td>
-                                                    <td class="numeric"> $13.83 </td>
-                                                    <td class="numeric"> $13.83 </td>
-                                                    <td class="numeric"> $13.67 </td>
-                                                    <td class="numeric"> 846,403 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> AGO </td>
-                                                    <td> ATLAS IRON LIMITED </td>
-                                                    <td class="numeric"> $3.17 </td>
-                                                    <td class="numeric"> -0.02 </td>
-                                                    <td class="numeric"> -0.47% </td>
-                                                    <td class="numeric"> $3.11 </td>
-                                                    <td class="numeric"> $3.22 </td>
-                                                    <td class="numeric"> $3.10 </td>
-                                                    <td class="numeric"> 5,416,303 </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN SAMPLE TABLE PORTLET-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Campaigns</div>
+                <div class="tools">
+                    <a href="javascript:;" class="reload"> </a>
+                </div>
+            </div>
+            <div class="portlet-body flip-scroll">
+
+                <div class="dataTables_wrapper">
+                    <div class="row">
+                        <table class="table table-bordered table-striped table-condensed flip-content">
+                            <thead class="flip-content">
+                                <tr>
+                                    <th width="20%"> # </th>
+                                    <th> Adv ID </th>
+                                    <th class="numeric"> Name </th>
+                                    <th class="numeric"> Visits </th>
+                                    <th class="numeric"> Conversion </th>
+                                    <th class="numeric"> Cost </th>
+                                    <th class="numeric"> Revenue </th>
+                                    <th class="numeric"> Status </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> AAC </td>
+                                    <td> AUSTRALIAN AGRICULTURAL COMPANY LIMITED. </td>
+                                    <td class="numeric"> &nbsp; </td>
+                                    <td class="numeric"> -0.01 </td>
+                                    <td class="numeric"> -0.36% </td>
+                                    <td class="numeric"> $1.39 </td>
+                                    <td class="numeric"> $1.39 </td>
+                                    <td class="numeric"> &nbsp; </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td> AAD </td>
+                                    <td> ARDENT LEISURE GROUP </td>
+                                    <td class="numeric"> $1.15 </td>
+                                    <td class="numeric"> +0.02 </td>
+                                    <td class="numeric"> 1.32% </td>
+                                    <td class="numeric"> $1.14 </td>
+                                    <td class="numeric"> $1.15 </td>
+                                    <td class="numeric"> $1.13 </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td> AAX </td>
+                                    <td> AUSENCO LIMITED </td>
+                                    <td class="numeric"> $4.00 </td>
+                                    <td class="numeric"> -0.04 </td>
+                                    <td class="numeric"> -0.99% </td>
+                                    <td class="numeric"> $4.01 </td>
+                                    <td class="numeric"> $4.05 </td>
+                                    <td class="numeric"> $4.00 </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td> ABC </td>
+                                    <td> ADELAIDE BRIGHTON LIMITED </td>
+                                    <td class="numeric"> $3.00 </td>
+                                    <td class="numeric"> +0.06 </td>
+                                    <td class="numeric"> 2.04% </td>
+                                    <td class="numeric"> $2.98 </td>
+                                    <td class="numeric"> $3.00 </td>
+                                    <td class="numeric"> $2.96 </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td> ABP </td>
+                                    <td> ABACUS PROPERTY GROUP </td>
+                                    <td class="numeric"> $1.91 </td>
+                                    <td class="numeric"> 0.00 </td>
+                                    <td class="numeric"> 0.00% </td>
+                                    <td class="numeric"> $1.92 </td>
+                                    <td class="numeric"> $1.93 </td>
+                                    <td class="numeric"> $1.90 </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td> ABY </td>
+                                    <td> ADITYA BIRLA MINERALS LIMITED </td>
+                                    <td class="numeric"> $0.77 </td>
+                                    <td class="numeric"> +0.02 </td>
+                                    <td class="numeric"> 2.00% </td>
+                                    <td class="numeric"> $0.76 </td>
+                                    <td class="numeric"> $0.77 </td>
+                                    <td class="numeric"> $0.76 </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td> ACR </td>
+                                    <td> ACRUX LIMITED </td>
+                                    <td class="numeric"> $3.71 </td>
+                                    <td class="numeric"> +0.01 </td>
+                                    <td class="numeric"> 0.14% </td>
+                                    <td class="numeric"> $3.70 </td>
+                                    <td class="numeric"> $3.72 </td>
+                                    <td class="numeric"> $3.68 </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td> ADU </td>
+                                    <td> ADAMUS RESOURCES LIMITED </td>
+                                    <td class="numeric"> $0.72 </td>
+                                    <td class="numeric"> 0.00 </td>
+                                    <td class="numeric"> 0.00% </td>
+                                    <td class="numeric"> $0.73 </td>
+                                    <td class="numeric"> $0.74 </td>
+                                    <td class="numeric"> $0.72 </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td> AGG </td>
+                                    <td> ANGLOGOLD ASHANTI LIMITED </td>
+                                    <td class="numeric"> $7.81 </td>
+                                    <td class="numeric"> -0.22 </td>
+                                    <td class="numeric"> -2.74% </td>
+                                    <td class="numeric"> $7.82 </td>
+                                    <td class="numeric"> $7.82 </td>
+                                    <td class="numeric"> $7.81 </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td> AGK </td>
+                                    <td> AGL ENERGY LIMITED </td>
+                                    <td class="numeric"> $13.82 </td>
+                                    <td class="numeric"> +0.02 </td>
+                                    <td class="numeric"> 0.14% </td>
+                                    <td class="numeric"> $13.83 </td>
+                                    <td class="numeric"> $13.83 </td>
+                                    <td class="numeric"> $13.67 </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td> AGO </td>
+                                    <td> ATLAS IRON LIMITED </td>
+                                    <td class="numeric"> $3.17 </td>
+                                    <td class="numeric"> -0.02 </td>
+                                    <td class="numeric"> -0.47% </td>
+                                    <td class="numeric"> $3.11 </td>
+                                    <td class="numeric"> $3.22 </td>
+                                    <td class="numeric"> $3.10 </td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5">
+                            <div class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 43 entries</div>
+                        </div>
+                        <div class="col-md-7 col-sm-7">
+                            <div class="dataTables_paginate paging_bootstrap_number">
+                                <ul class="pagination" style="visibility: visible;">
+                                    <li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            
+
+        </div>
+
+        
+
+    </div>
+
+    
+
+</div>
