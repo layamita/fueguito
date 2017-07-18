@@ -20,9 +20,17 @@
                             <div class="mt-repeater-input">
                                 <label class="control-label">Name</label>
                                 <br/>
-                                <select id="select2-button-addons-single-input-group-sm" class="form-control js-data-example-ajax" dir="rtl">
-                                    
-                                </select>
+                                <!--select-http config="{url:'https://api.github.com/search/repositories'}"></select-http-->
+                                <select 
+                                    select-http 
+                                    class           = "js-select-http form-control" 
+                                    dir             = "rtl"
+                                    config          = "{url:'https://api.github.com/search/repositories'}"
+                                    change-value    = "changeValue()"
+                                    var-select      = "varSelect"
+                                ></select>
+                                varSelect: {{'{{varSelect}}'}}
+                                <input ng-model="varSelect">
                             </div>
                             <div class="mt-repeater-input">
                                 <label class="control-label">Status</label>

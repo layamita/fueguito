@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
-                        function( $scope,   $state,   $http, APIService) {
+app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'userModel',
+                        function( $scope,   $state,   $http, userModel) {
     
     $scope.respRevenue           = {};
     $scope.respDashBox01         = {};
@@ -19,10 +19,14 @@ app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
 
     $scope.test = function(){
 
-        APIService.all("user").getList().then(function(user){
+        console.log('test');
+        /*
+        callApi.all("user").getList().then(function(user){
                 console.log(user[0].name);
             });
-
+        */
+        var user = userModel.getLogued();
+        //console.log(user);
         
     }
 
@@ -38,6 +42,7 @@ app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
         var id_database = $scope.selectedDatabase   || null;
         var client      = $scope.selectedClient     || 0;
         
+        /*
         $http.post('/api/dashrevenue/get', {id_database:id_database, client:client}).then(function (resp) {
             
             if(resp.data.vars.element){
@@ -48,6 +53,7 @@ app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
 
             }
         });
+        */
     }
     
     $scope.resetBox01 = function(){
@@ -80,6 +86,7 @@ app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
         var date        = $scope.daterange          || null;
         var client      = $scope.selectedClient     ||  0;
         
+        /*
         $http.post('/api/dashbox01/get', {client:client, id_database:id_database, date:date}).then(function (resp) {
             
             if(resp.data.vars.element){
@@ -101,7 +108,7 @@ app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
                 $scope.updateGraph                 = true;
             }
         });
-        
+        */
     
     };
     
@@ -112,6 +119,7 @@ app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
         var client      = $scope.selectedClient     ||  0;
         
         $scope.resetBox02();
+        /*
         $http.post('/api/dashbox02/get', {date:date, id_database:id_database, client:client}).then(function (resp) {
         
             $scope.items.total.payout          = 0;
@@ -125,13 +133,14 @@ app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
             $scope.respDashBox02.result        = resp.data.result;
             $scope.respDashBox02.message       = resp.data.vars.message;
         });
-    
+        */
     };
     
     if($scope.admin){
     
         $scope.getClients = function(){
-    
+            
+            /*
             $http.post('/api/dashbox01/clients').then(function (resp) {
                 if(resp.data.vars.elements.length){
                     $scope.clients.push({'name':'Select Database',id_client:'no'});
@@ -139,6 +148,7 @@ app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
                     $scope.selectedDatabase = 'no';
                 }
             });
+            */
         }
         $scope.getClients();
     }
@@ -148,6 +158,7 @@ app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
         var date        = $scope.daterange;
         var client      = $scope.selectedClient || 0;
         
+        /*
         $http.post('/api/dashbox01/databases', {date:date, client:client}).then(function (resp) {
             if(resp.data.vars.elements.length){
                 $scope.databases = [];
@@ -157,6 +168,7 @@ app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
                 $scope.selectedCampaign = 'no';
             }
         });
+        */
     }
     
     $scope.changeDate = function(){
@@ -224,6 +236,7 @@ app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'APIService',
     $scope.getDatabases();
     $scope.box01();
     $scope.box02();
+    $scope.test();
     
     
     

@@ -1,0 +1,70 @@
+'use strict';
+
+angular.module('app')
+    .provider('callApi', [function callApiProvider() {
+
+        var _base_path = '';
+        var _login_path = '';
+        var headers = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/x.laravel.v1+json'
+        }
+
+        this.setBasePath = function (base_path) {
+            _base_path = base_path;
+        }
+
+        this.setUrlPath = function (url_path) {
+            _url_path = url_path;
+        }
+
+        this.$get = ['Restangular', '$window', 'toaster', function callApiFactory(Restangular, $window, toaster) {
+            return Restangular.withConfig(function (RestangularConfigurer) {
+                RestangularConfigurer
+                    .setBaseUrl(_base_path)
+                    .setDefaultHeaders(headers)
+                    .setFullResponse(true)
+                    .setErrorInterceptor(function (response) {
+                        if (response.status === 401) {
+                            console.log('error 401 :: ' + response.statusText);
+                            window.location = _login_path
+                        }
+                        if (response.status === 404) {
+                            toaster.pop({
+                                type: 'error',
+                                title: 'Ups!',
+                                body: response.config.url + ' ' + response.statusText,
+                            });
+                        }
+                        if (response.status === 422) {
+                            // for (var error in response.data.errors) {
+                            // return ToastService.error(response.data.errors[error][0])
+                            // }
+                        }
+                    })
+                    .addFullRequestInterceptor(function (element, operation, what, url, headers) {
+                        var token = $window.localStorage.satellizer_token
+                        if (token) {
+                            headers.Authorization = 'Bearer ' + token
+                        }
+                    })
+                    .addResponseInterceptor(function (response, operation, what) {
+
+                        if (operation === 'getList') {
+                            var newResponse = response.data
+                            //newResponse.error = response.error
+                            return newResponse
+                        }
+
+                        if (operation === 'get') {
+                            var newResponse = response.data
+                            //newResponse.error = response.error
+                            return newResponse
+                        }
+
+                        return newResponse
+                    })
+            })
+        }]
+
+    }]);

@@ -12,13 +12,14 @@
         "rcrowe/twigbridge": "^0.9.4",
         "reliese/laravel": "^0.0.13",
         "s1lentium/iptools": "^1.1",
-        "spatie/laravel-permission": "^1.12",
+        "spatie/laravel-permission": "^2.1",
         "yadakhov/insert-on-duplicate-key": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7"
+        "phpunit/phpunit": "~5.7",
+        "xethron/migrations-generator": "^2.0"
     },
     "autoload": {
         "classmap": [

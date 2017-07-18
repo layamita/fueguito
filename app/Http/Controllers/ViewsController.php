@@ -30,6 +30,18 @@ class ViewsController extends Controller
         $this->base_path    = 'angular/modules/';
         return($this->getResponse());
     }
+
+    /**
+     * Show template.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function directive($pathToFile)
+    {
+        $this->file_request = $pathToFile;
+        $this->base_path    = 'angular/directives/';
+        return($this->getResponse());
+    }
     
     /**
      * Show template.

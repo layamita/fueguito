@@ -3,11 +3,18 @@
 app.controller('CampaignCtrl', ['$scope', '$state', '$http', 'APIService',
                         function( $scope,   $state,   $http, APIService) {
     
-    
-    
+    $scope.varSelect = '123';
+
+    $scope.changeValue = function(){
+
+        alert($scope.varSelect);
+        console.log($scope.varSelect);
+        $scope.varSelect = $scope.varSelect;
+    }
+
     
     $scope.init = function(){
-        
+       
     }
 
     $scope.init();

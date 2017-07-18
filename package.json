@@ -24,6 +24,8 @@
     "angular-animate": "^1.6.4",
     "angular-aria": "^1.6.4",
     "angular-material": "^1.1.4",
+    "angular-resource": "^1.6.4",
+    "angular-route": "^1.6.4",
     "angular-slimscroll": "^1.0.0",
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^1.0.3",

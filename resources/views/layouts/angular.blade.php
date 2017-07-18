@@ -20,7 +20,7 @@
     
 </head>
 
-<body ng-controller="AppCtrl" class="page-header-fixed page-sidebar-closed-hide-logo page-on-load" ng-class="{'page-container-bg-solid': app.settings.layout.pageBodySolid, 'page-sidebar-closed': app.settings.layout.pageSidebarClosed}">
+<body ng-controller="MainCtrl" class="page-header-fixed page-sidebar-closed-hide-logo page-on-load" ng-class="{'page-container-bg-solid': app.settings.layout.pageBodySolid, 'page-sidebar-closed': app.settings.layout.pageSidebarClosed}">
     <div ui-view></div>
     <script src="{{ mix('js/all.js') }}"></script>
 </body>

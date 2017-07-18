@@ -1,0 +1,14 @@
+'use strict';
+
+function userModel(callApi){
+
+    this.getLogued = function(){
+            console.log('getLogued');
+            callApi.all("user").getList().then(function(user){
+                console.log('user');
+                return(user);
+            });
+        }
+
+}
+angular.module('app').service('userModel',['callApi',userModel]);

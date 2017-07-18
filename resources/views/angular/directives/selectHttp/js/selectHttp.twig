@@ -1,0 +1,110 @@
+//'use strict';
+
+angular.module('app').directive('selectHttp', ['$rootScope',function ($rootScope) {
+
+    return {
+        restrict: 'A',
+        scope:false,
+        link: function ($scope, $element, $attrs) {
+
+            if (!angular.isDefined($attrs.config)) {
+                console.log('set config attr on select-http directive')
+            }else{
+                $scope.config = $scope.$eval($attrs.config);
+            }
+
+            $element.on('change',function(){
+                $scope.varSelect = $element.val();
+                $scope.changeValue();
+            });
+
+            function formatRepo(repo) {
+                if (repo.loading) return repo.text;
+
+                var markup = "<div class='select2-result-repository clearfix'>" +
+                    "<div class='select2-result-repository__avatar'><img src='" + repo.owner.avatar_url + "' /></div>" +
+                    "<div class='select2-result-repository__meta'>" +
+                    "<div class='select2-result-repository__title'>" + repo.full_name + "</div>";
+
+                if (repo.description) {
+                    markup += "<div class='select2-result-repository__description'>" + repo.description + "</div>";
+                }
+
+                markup += "<div class='select2-result-repository__statistics'>" +
+                    "<div class='select2-result-repository__forks'><span class='glyphicon glyphicon-flash'></span> " + repo.forks_count + " Forks</div>" +
+                    "<div class='select2-result-repository__stargazers'><span class='glyphicon glyphicon-star'></span> " + repo.stargazers_count + " Stars</div>" +
+                    "<div class='select2-result-repository__watchers'><span class='glyphicon glyphicon-eye-open'></span> " + repo.watchers_count + " Watchers</div>" +
+                    "</div>" +
+                    "</div></div>";
+
+                return markup;
+            }
+
+            function formatRepoSelection(repo) {
+                return repo.full_name || repo.text;
+            }
+
+            $scope.init = function () {
+
+                //console.log("2222");
+                console.log($rootScope);
+
+                if (angular.isDefined($scope.config.url)) {
+
+                    $(".js-select-http").select2({
+                        width: "off",
+                        ajax: {
+                            url:        $scope.config.url,
+                            dataType:   'json',
+                            delay:      250,
+                            data: function (params) {
+                                return {
+                                    q: params.term, // search term
+                                    page: params.page
+                                };
+                            },
+                            processResults: function (data, page) {
+                                // parse the results into the format expected by Select2.
+                                // since we are using custom formatting functions we do not need to
+                                // alter the remote JSON data
+                                return {
+                                    results: data.items
+                                };
+                            },
+                            cache: true
+                        },
+                        
+                        escapeMarkup: function (markup) {
+                            return markup;
+                        }, // let our custom formatter work
+                        minimumInputLength: 1,
+                        templateResult: formatRepo,
+                        templateSelection: formatRepoSelection
+                    });
+
+                } else {
+                    console.log('set config.url value on select-http directive');
+                }
+
+
+            }
+
+            $scope.init();
+
+        }
+    };
+
+}]);
+
+
+/*
+app.controller('CampaignCtrl', ['$scope', '$state', '$http', 'APIService',
+                        function( $scope,   $state,   $http, APIService) {
+    
+    
+    
+    
+    
+        
+}]);
+*/

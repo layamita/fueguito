@@ -1,0 +1,7 @@
+'use strict';
+
+angular.module('app')
+    .config(['constantsApi','constantsUrls','callApiProvider',function (constantsApi,constantsUrls,callApiProvider) {
+        callApiProvider.setBasePath(constantsApi.base_path);
+        callApiProvider.setUrlPath(constantsUrls.login);
+    }]);

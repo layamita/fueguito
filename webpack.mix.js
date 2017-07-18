@@ -35,7 +35,9 @@ mix.scripts([
     'node_modules/select2/dist/js/select2.full.js',
     //END CORE JQUERY PLUGINS
     //'public/js/vendor.js',
-    'node_modules/angular/angular.min.js',
+    'node_modules/angular/angular.js',
+    'node_modules/angular-route/angular-route.js',
+    'node_modules/angular-resource/angular-resource.js',
     'node_modules/angular-animate/angular-animate.min.js',
     'node_modules/angular-aria/angular-aria.min.js',
     'node_modules/angular-material/angular-material.min.js',
@@ -52,24 +54,35 @@ mix.scripts([
     'node_modules/restangular/dist/restangular.js',
     'public/test/assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js',
     //BEGIN APP LEVEL JQUERY SCRIPTS
-    //'public/test/assets/global/scripts/app.js',
     'public/assets/global/scripts/app.js',
     'public/assets/layout/layout/scripts/layout.js',
     'public/assets/layout/global/scripts/quick-sidebar.min.js',
     'public/assets/layout/global/scripts/quick-nav.min.js',
-    //Modulos
+    //Alta Módulo principal
     'resources/views/angular/app.twig',
-    //Directives
-    'resources/views/angular/directives/directives.twig',
+    //Services - Constants
+    'resources/views/angular/services/constanst/constantsApi.twig',
+    'resources/views/angular/services/constanst/constanstUrls.twig',
+    'resources/views/angular/services/constanst/constantsApp.twig',
+    //Services - Services
+    ////'resources/views/angular/services/services/api.twig',
+    //Services - Services - Models
+    'resources/views/angular/services/services/models/user.twig',
+    //Services - Providers
+    'resources/views/angular/services/provider/callApi.twig',
+    //Config
     'resources/views/angular/config/router.twig',
     'resources/views/angular/config/config.twig',
-    'resources/views/angular/main.twig', 
     'resources/views/angular/config/lazyload.twig',
-    //Controllers
-    'resources/views/angular/controllers/controllers.twig',
+    'resources/views/angular/config/configApi.twig',
+    //Directives
+    'resources/views/angular/directives/directives.twig',
+    'resources/views/angular/directives/selectHttp/js/selectHttp.twig',
     //Interceptors
-    //Services
-    'resources/views/angular/services/api.twig',
+    
+    //Controllers
+    'resources/views/angular/controllers/main.twig', 
+    'resources/views/angular/controllers/controllers.twig',
     ], 'public/js/all.js')
    //.sass('resources/assets/sass/app.scss', 'public/css')
     .version();
