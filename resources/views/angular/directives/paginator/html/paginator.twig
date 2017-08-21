@@ -5,9 +5,9 @@
     <div class="col-md-7 col-sm-7">
         <div class="dataTables_paginate paging_bootstrap_number">
             <ul class="pagination" style="visibility: visible;">
-                <li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li>
-                <li ng-repeat="n in pages()" ng-click="setOnPage(n)" ng-class="{active:classActive(n)}"><a href="#">{{'{{n}}'}}</a></li>
-                <li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li>
+                <li class="prev" ng-class="{disabled:disablePrev}"><a href="#" ng-click="setOnPage(from-1)" ng-disable="disablePrev" title="Prev"><i class="fa fa-angle-left"></i></a></li>
+                <li ng-repeat="n in pages()" ng-class="{active:classActive(n)}"><a href="#" ng-click="setOnPage(n)">{{'{{n}}'}}</a></li>
+                <li class="next" ng-class="{disabled:disableNext}"><a href="#" ng-click="setOnPage(to+1)" ng-disable="disableNext" title="Next"><i class="fa fa-angle-right"></i></a></li>
             </ul>
         </div>
     </div>

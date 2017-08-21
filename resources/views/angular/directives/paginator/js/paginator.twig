@@ -3,24 +3,81 @@ angular.module('app').directive('paginator',[function(){
         templateUrl: 'angular/directives/paginator-paginator.html',
         restrict: 'E',
         scope: {
-            elementsByPage: '=',
+            itemsByPage: '=',
             onPage:'=',
-            totalElements: '='
+            totalItems: '=',
+            pagesByRotatore: '='
         },
         link: function($scope, $element, $attrs){
 
+            $scope.total_pages = 0;
+
             $scope.classActive = function(page){
+                var ret = ($scope.onPage == page);
+                console.log('classActive '+ret +' - page: '+page+' - Onpage: '+$scope.onPage);
                 return ($scope.onPage == page);
             }
 
             $scope.setOnPage = function(onPage){
+
+                if(onPage >  $scope.total_pages){
+                    return null;
+                }
+
+                if(onPage < 1){
+                    return null;
+                }
+                
+
+                //guardamos parte entera pagina actual / paginas por rotatore
+                $scope.aux1 = Math.trunc(onPage/$scope.pagesByRotatore);
+                //guardamos resto pagina actual / paginas por rotatore
+                $scope.aux2 = (onPage%$scope.pagesByRotatore);
+
+                $scope.from         = 1;
+                $scope.to           = 0;
+
+                if( ($scope.aux1 == 0) || (($scope.aux1==1) && $scope.aux2==0)) {
+                    $scope.from    = 1;
+                }else{
+                    if(($scope.aux1>1) && ($scope.aux2==0)){
+                        $scope.from = (($scope.aux1-1)*$scope.pagesByRotatore)+1;
+                    }else{
+                        $scope.from    = ($scope.aux1 * $scope.pagesByRotatore)+1;
+                    }
+
+                    
+                }
+
+                //from + (paginas por rotatore -1)
+                $scope.to = $scope.from + ($scope.pagesByRotatore-1); 
+                $scope.to = ($scope.to < $scope.total_pages) ? $scope.to : $scope.total_pages;
+
+                console.log('onPage:'+onPage,' - pagesByRotatore: '+$scope.pagesByRotatore,' - aux1: '+$scope.aux1+ '- aux2: '+$scope.aux2+' - '+onPage/$scope.pagesByRotatore ,' - From '+$scope.from,' - To: '+$scope.to);
+
+                
+                if(onPage < $scope.from){
+                    //onPage = 1; 
+                    $scope.pages();
+                }
+                
+                if(onPage > $scope.to){
+                    //onPage = $scope.total_pages; 
+                    $scope.pages();
+                }
+
+                //console.log("Prev: "+onPage, 1, onPage == 1);
+                $scope.disablePrev = (onPage == 1);
+                //console.log("Next: "+onPage, $scope.total_pages, onPage == $scope.total_pages);
+                $scope.disableNext = (onPage == $scope.total_pages);
+
                 $scope.onPage = onPage;
             }
             
             $scope.pages = function(){
 
-                var input = [];
-                for (var i = 1; i <= $scope.mount_pages; i += 1){
+                var input       = [];
+                for (var i = $scope.from; i <= $scope.to; i += 1){
                     input.push(i);
                 }
                 return(input);
@@ -28,13 +85,14 @@ angular.module('app').directive('paginator',[function(){
 
             $scope.init = function(){
 
-                $scope.totalElements    = $scope.totalElements  || 0;
-                $scope.elementsByPage   = $scope.elementsByPage || 1;
-                $scope.onPage           = $scope.onPage         || 1;
+                $scope.totalItems       = $scope.totalItems      || 0;
+                $scope.elementsByPage   = $scope.elementsByPage  || 10;
+                $scope.onPage           = $scope.onPage          || 1;
+                $scope.pagesByRotatore  = $scope.pagesByRotatore || 5;
 
-                $scope.mount_pages = Math.ceil($scope.totalElements/$scope.elementsByPage);
-
-                //console.log($scope.elementsByPage, $scope.actualPage, $scope.totalElements, $scope.pages);    
+                $scope.total_pages      = Math.ceil($scope.totalItems/$scope.itemsByPage);
+                $scope.setOnPage($scope.onPage);
+                //console.log($scope.elementsByPage, $scope.actualPage, $scope.totalItems, $scope.pages);    
             }
             $scope.init();
 
