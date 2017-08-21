@@ -1,7 +1,6 @@
-<div ng-controller="CampaignCtrl" class="portlet box red">
+<div ng-controller="CampaignCtrl">
+<div class="portlet box red">
     
-        <paginator pages-by-rotatore="list.pagesByRotatore" items-by-page="list.itemsByPage" on-page="list.onPage" total-items="list.totalItems"></paginator>
-
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-gift"></i>Filter Option's</div>
@@ -205,10 +204,8 @@
                             </tbody>
                         </table>
                     </div>
-                    
-                    
-                    
                 </div>
+                <paginator on-change-page="changePage()" pages-by-rotatore="list.pagesByRotatore" items-by-page="list.itemsByPage" on-page="list.onPage" total-items="list.totalItems"></paginator>
             </div>
 
             
@@ -223,4 +220,5 @@
 
     
 
+</div>
 </div>

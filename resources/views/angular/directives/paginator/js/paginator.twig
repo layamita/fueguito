@@ -3,13 +3,23 @@ angular.module('app').directive('paginator',[function(){
         templateUrl: 'angular/directives/paginator-paginator.html',
         restrict: 'E',
         scope: {
-            itemsByPage: '=',
-            onPage:'=',
-            totalItems: '=',
+            onChangePage:    '&',
+            itemsByPage:     '=',
+            onPage:          '=',
+            totalItems:      '=',
             pagesByRotatore: '='
         },
         link: function($scope, $element, $attrs){
 
+            $scope.onChangePage();
+
+            $scope.changed = function(){
+                $scope.onChangePage();
+            }
+
+
+
+            /*
             $scope.total_pages = 0;
 
             $scope.classActive = function(page){
@@ -28,7 +38,6 @@ angular.module('app').directive('paginator',[function(){
                     return null;
                 }
                 
-
                 //guardamos parte entera pagina actual / paginas por rotatore
                 $scope.aux1 = Math.trunc(onPage/$scope.pagesByRotatore);
                 //guardamos resto pagina actual / paginas por rotatore
@@ -45,8 +54,6 @@ angular.module('app').directive('paginator',[function(){
                     }else{
                         $scope.from    = ($scope.aux1 * $scope.pagesByRotatore)+1;
                     }
-
-                    
                 }
 
                 //from + (paginas por rotatore -1)
@@ -56,20 +63,21 @@ angular.module('app').directive('paginator',[function(){
                 console.log('onPage:'+onPage,' - pagesByRotatore: '+$scope.pagesByRotatore,' - aux1: '+$scope.aux1+ '- aux2: '+$scope.aux2+' - '+onPage/$scope.pagesByRotatore ,' - From '+$scope.from,' - To: '+$scope.to);
 
                 
+                //En caso de salto rotatore prev
                 if(onPage < $scope.from){
-                    //onPage = 1; 
                     $scope.pages();
                 }
                 
+                //En caso de salto rotatore max
                 if(onPage > $scope.to){
-                    //onPage = $scope.total_pages; 
                     $scope.pages();
                 }
 
-                //console.log("Prev: "+onPage, 1, onPage == 1);
-                $scope.disablePrev = (onPage == 1);
-                //console.log("Next: "+onPage, $scope.total_pages, onPage == $scope.total_pages);
-                $scope.disableNext = (onPage == $scope.total_pages);
+                
+                $scope.disablePrev  = (onPage == 1);
+                $scope.disableNext  = (onPage == $scope.total_pages);
+                $scope.showFrom     = onPage*$scope.itemsByPage;
+                $scope.showTo       = $scope.showFrom+$scope.itemsByPage;
 
                 $scope.onPage = onPage;
             }
@@ -96,7 +104,7 @@ angular.module('app').directive('paginator',[function(){
             }
             $scope.init();
 
-
+            */
             
         }
     };

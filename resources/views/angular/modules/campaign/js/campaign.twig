@@ -7,13 +7,17 @@ app.controller('CampaignCtrl', ['$scope', '$state', '$http',
 
     $scope.onPage = 3;
 
-    $scope.list = {itemsByPage:10, pagesByRotatore:10, onPage:3,totalItems:211}
+    $scope.list = {itemsByPage:10, pagesByRotatore:10, onPage:1,totalItems:211}
 
     $scope.changeValue = function(){
 
         //alert($scope.varSelect);
         //console.log($scope.varSelect);
         //$scope.varSelect = $scope.varSelect;
+    }
+
+    $scope.changePage = function(){
+        console.log('Pagina: '+$scope.list.onPage);
     }
 
     
