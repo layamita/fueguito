@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-md-5 col-sm-5">
+        <div class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of {{'{{totalElements}}'}} entries</div>
+    </div>
+    <div class="col-md-7 col-sm-7">
+        <div class="dataTables_paginate paging_bootstrap_number">
+            <ul class="pagination" style="visibility: visible;">
+                <li class="prev disabled"><a href="#" title="Prev"><i class="fa fa-angle-left"></i></a></li>
+                <li ng-repeat="n in pages()" ng-click="setOnPage(n)" ng-class="{active:classActive(n)}"><a href="#">{{'{{n}}'}}</a></li>
+                <li class="next"><a href="#" title="Next"><i class="fa fa-angle-right"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>

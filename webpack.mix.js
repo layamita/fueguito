@@ -33,6 +33,13 @@ mix.scripts([
     'node_modules/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js',
     'public/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js',
     'node_modules/select2/dist/js/select2.full.js',
+    //Flot
+    'node_modules/flot/jquery.flot.js',
+    'node_modules/flot/jquery.flot.resize.js',
+    'node_modules/flot/jquery.flot.categories.js',
+    //Counter-UP
+    'node_modules/waypoints/lib/jquery.waypoints.js',
+    'node_modules/jquery.counterup/jquery.counterup.js',
     //END CORE JQUERY PLUGINS
     //'public/js/vendor.js',
     'node_modules/angular/angular.js',
@@ -77,7 +84,8 @@ mix.scripts([
     'resources/views/angular/config/configApi.twig',
     //Directives
     'resources/views/angular/directives/directives.twig',
-    'resources/views/angular/directives/selectHttp/js/selectHttp.twig',
+    'resources/views/angular/directives/selectHttp.twig',
+    'resources/views/angular/directives/paginator/js/paginator.twig',
     //Interceptors
     
     //Controllers

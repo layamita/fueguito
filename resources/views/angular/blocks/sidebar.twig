@@ -49,7 +49,18 @@
                     </a>
                 </li>
                 {% endif %}
+
+                {% if user.hasPermissionTo('view_offers') %}
+                <li>
+                    <a ui-sref="app.offers">
+                        <i class="icon-puzzle"></i>Offers</span>
+                    </a>
+                </li>
+                {% endif %}
             </ul>
+            
+                
+            
         </li>
         {% if(false) %}
         <li class="nav-item">

@@ -1,241 +1,191 @@
 'use strict';
 
-app.controller('DashboardCtrl', ['$scope', '$state', '$http', 'userModel',
-                        function( $scope,   $state,   $http, userModel) {
+app.controller('DashboardCtrl', ['$scope', function( $scope,) {
     
-    $scope.respRevenue           = {};
-    $scope.respDashBox01         = {};
-    $scope.respDashBox02             = {};
-    $scope.respDashBox02.predicate   = 'date';
-    $scope.respDashBox02.reverse     = true;
-    $scope.updateGraph           = false;
-    $scope.daterange             = null;
-    $scope.idInterval            = 0;
-    $scope.eachSelectDisable     = false;
-    $scope.databases             = [];
-    $scope.clients               = [];
-    $scope.items                 = {};
-    $scope.admin                 = false;
-
     $scope.test = function(){
 
-        console.log('test');
-        /*
-        callApi.all("user").getList().then(function(user){
-                console.log(user[0].name);
-            });
-        */
-        var user = userModel.getLogued();
-        //console.log(user);
-        
-    }
+       
+//        if ($('#site_statistics').size() != 0) {
 
-        
+                $('#site_statistics_loading').hide();
+                $('#site_statistics_content').show();
 
-    
-    $scope.resetRevenue = function(){
-        $scope.respRevenue.element   = {'today':0, 'actual_month':0, 'last_month':0};
-    }
-    
-    $scope.getRevenue = function(){
-    
-        var id_database = $scope.selectedDatabase   || null;
-        var client      = $scope.selectedClient     || 0;
-        
-        /*
-        $http.post('/api/dashrevenue/get', {id_database:id_database, client:client}).then(function (resp) {
-            
-            if(resp.data.vars.element){
-            
-                $scope.respRevenue.element       = resp.data.vars.element;
-                $scope.respRevenue.result        = resp.data.result;
-                $scope.respRevenue.message       = resp.data.vars.message;
+                var visitors = [
+                ['02/2013', 1500],
+                ['03/2013', 2500],
+                ['04/2013', 1700],
+                ['05/2013', 800],
+                ['06/2013', 1500],
+                ['07/2013', 2350],
+                ['08/2013', 1500],
+                ['09/2013', 1300],
+                ['10/2013', 4600]
+            ];
 
-            }
-        });
-        */
-    }
-    
-    $scope.resetBox01 = function(){
-        
-        $scope.respDashBox01.element = {date:"",total_deliveries:"0","total_openned":"0","total_bounces":"0","total_clicked":"0"};
-        $scope.respDashBox01.element.porEnt = 0;
-        $scope.respDashBox01.element.porB   = 0;
-        $scope.respDashBox01.element.porAT  = 0;
-        $scope.respDashBox01.element.porCT  = 0;
-    }
-    
-    $scope.resetBox02 = function(){
-        $scope.items.total = {
-            payout      : 0,
-            deliveries  : 0,
-            openned     : 0,
-            clicked     : 0,
-            epc         : 0,
-            epm         : 0
-        }
-    }
-    
-    $scope.resetRevenue();
-    $scope.resetBox01();
-    
-    $scope.box01 = function(){
-        
-        //user.checkLogin();
-        var id_database = $scope.selectedDatabase   || null;
-        var date        = $scope.daterange          || null;
-        var client      = $scope.selectedClient     ||  0;
-        
-        /*
-        $http.post('/api/dashbox01/get', {client:client, id_database:id_database, date:date}).then(function (resp) {
-            
-            if(resp.data.vars.element){
-            
-                $scope.respDashBox01.element       = resp.data.vars.element;
-                $scope.respDashBox01.result        = resp.data.result;
-                $scope.respDashBox01.message       = resp.data.vars.message;
+                var plot_statistics = $.plot($("#site_statistics"), [{
+                        data: visitors,
+                        lines: {
+                            fill: 0.6,
+                            lineWidth: 0
+                        },
+                        color: ['#f89f9f']
+                    }, {
+                        data: visitors,
+                        points: {
+                            show: true,
+                            fill: true,
+                            radius: 5,
+                            fillColor: "#f89f9f",
+                            lineWidth: 3
+                        },
+                        color: '#fff',
+                        shadowSize: 0
+                    }],
 
-                $scope.respDashBox01.element.porEnt = (($scope.respDashBox01.element.total_deliveries*100)/$scope.respDashBox01.element.total_sends)    || 0;
-                $scope.respDashBox01.element.porB   = (($scope.respDashBox01.element.total_bounces*100)/$scope.respDashBox01.element.total_sends)       || 0;
-                $scope.respDashBox01.element.porAT  = (($scope.respDashBox01.element.total_openned*100)/$scope.respDashBox01.element.total_deliveries)  || 0;
-                $scope.respDashBox01.element.porCT  = (($scope.respDashBox01.element.total_clicked*100)/$scope.respDashBox01.element.total_openned)     || 0;
-                $scope.respDashBox01.element.porConv= (($scope.respDashBox01.element.total_conversion*100)/$scope.respDashBox01.element.total_clicked)  || 0;
-                
-                
-                $scope.updateGraph                 = true;
-            }else{
-                $scope.resetBox01();
-                $scope.updateGraph                 = true;
-            }
-        });
-        */
-    
-    };
-    
-    $scope.box02 = function(){
-        
-        var date        = $scope.daterangeBox02     || null;
-        var id_database = $scope.selectedDatabase   || null;
-        var client      = $scope.selectedClient     ||  0;
-        
-        $scope.resetBox02();
-        /*
-        $http.post('/api/dashbox02/get', {date:date, id_database:id_database, client:client}).then(function (resp) {
-        
-            $scope.items.total.payout          = 0;
-            $scope.items.total.deliveries      = 0;
-            $scope.items.total.openned         = 0;
-            $scope.items.total.clicked         = 0;
-            $scope.items.total.ctr             = 0;
-            $scope.items.total.epc             = 0;
-            $scope.items.total.epm             = 0;
-            $scope.respDashBox02.elements      = resp.data.vars;
-            $scope.respDashBox02.result        = resp.data.result;
-            $scope.respDashBox02.message       = resp.data.vars.message;
-        });
-        */
-    };
-    
-    if($scope.admin){
-    
-        $scope.getClients = function(){
+                    {
+                        xaxis: {
+                            tickLength: 0,
+                            tickDecimals: 0,
+                            mode: "categories",
+                            min: 0,
+                            font: {
+                                lineHeight: 14,
+                                style: "normal",
+                                variant: "small-caps",
+                                color: "#6F7B8A"
+                            }
+                        },
+                        yaxis: {
+                            ticks: 5,
+                            tickDecimals: 0,
+                            tickColor: "#eee",
+                            font: {
+                                lineHeight: 14,
+                                style: "normal",
+                                variant: "small-caps",
+                                color: "#6F7B8A"
+                            }
+                        },
+                        grid: {
+                            hoverable: true,
+                            clickable: true,
+                            tickColor: "#eee",
+                            borderColor: "#eee",
+                            borderWidth: 1
+                        }
+                    });
+
+                    
+            //if ($('#site_activities').size() != 0) {
+                //site activities
+                var previousPoint2 = null;
+                $('#site_activities_loading').hide();
+                $('#site_activities_content').show();
+
+                var data1 = [
+                    ['DEC', 300],
+                    ['JAN', 600],
+                    ['FEB', 1100],
+                    ['MAR', 1200],
+                    ['APR', 860],
+                    ['MAY', 1200],
+                    ['JUN', 1450],
+                    ['JUL', 1800],
+                    ['AUG', 1200],
+                    ['SEP', 600]
+                ];
+
+
+                var plot_statistics = $.plot($("#site_activities"),
+
+                    [{
+                        data: data1,
+                        lines: {
+                            fill: 0.2,
+                            lineWidth: 0,
+                        },
+                        color: ['#BAD9F5']
+                    }, {
+                        data: data1,
+                        points: {
+                            show: true,
+                            fill: true,
+                            radius: 4,
+                            fillColor: "#9ACAE6",
+                            lineWidth: 2
+                        },
+                        color: '#9ACAE6',
+                        shadowSize: 1
+                    }, {
+                        data: data1,
+                        lines: {
+                            show: true,
+                            fill: false,
+                            lineWidth: 3
+                        },
+                        color: '#9ACAE6',
+                        shadowSize: 0
+                    }],
+
+                    {
+
+                        xaxis: {
+                            tickLength: 0,
+                            tickDecimals: 0,
+                            mode: "categories",
+                            min: 0,
+                            font: {
+                                lineHeight: 18,
+                                style: "normal",
+                                variant: "small-caps",
+                                color: "#6F7B8A"
+                            }
+                        },
+                        yaxis: {
+                            ticks: 5,
+                            tickDecimals: 0,
+                            tickColor: "#eee",
+                            font: {
+                                lineHeight: 14,
+                                style: "normal",
+                                variant: "small-caps",
+                                color: "#6F7B8A"
+                            }
+                        },
+                        grid: {
+                            hoverable: true,
+                            clickable: true,
+                            tickColor: "#eee",
+                            borderColor: "#eee",
+                            borderWidth: 1
+                        }
+                    });
+
+                $("#site_activities").bind("plothover", function(event, pos, item) {
+                    $("#x").text(pos.x.toFixed(2));
+                    $("#y").text(pos.y.toFixed(2));
+                    if (item) {
+                        if (previousPoint2 != item.dataIndex) {
+                            previousPoint2 = item.dataIndex;
+                            $("#tooltip").remove();
+                            var x = item.datapoint[0].toFixed(2),
+                                y = item.datapoint[1].toFixed(2);
+                            showChartTooltip(item.pageX, item.pageY, item.datapoint[0], item.datapoint[1] + 'M$');
+                        }
+                    }
+                });
+
+                $('#site_activities').bind("mouseleave", function() {
+                    $("#tooltip").remove();
+                });
+            //}
             
-            /*
-            $http.post('/api/dashbox01/clients').then(function (resp) {
-                if(resp.data.vars.elements.length){
-                    $scope.clients.push({'name':'Select Database',id_client:'no'});
-                    $scope.clients = $scope.clients.concat(resp.data.vars.elements);
-                    $scope.selectedDatabase = 'no';
-                }
-            });
-            */
+            $('.counter').counterUp();
+
         }
-        $scope.getClients();
-    }
-    
-    $scope.getDatabases = function(){
-    
-        var date        = $scope.daterange;
-        var client      = $scope.selectedClient || 0;
         
-        /*
-        $http.post('/api/dashbox01/databases', {date:date, client:client}).then(function (resp) {
-            if(resp.data.vars.elements.length){
-                $scope.databases = [];
-                $scope.databases.push({'name':'Select Database',id_database:'no'});
-                $scope.databases.push({'name':'All',id_database:0});
-                $scope.databases = $scope.databases.concat(resp.data.vars.elements);
-                $scope.selectedCampaign = 'no';
-            }
-        });
-        */
-    }
-    
-    $scope.changeDate = function(){
-        $scope.updateGraph   = false;
-        if($scope.selectedDatabase != 'no'){
-            //$scope.resetBox01();
-            //$scope.getRevenue();
-            $scope.box01();
-        }
-    }
-    
-    $scope.changeDatabase = function(){
-        $scope.updateGraph   = false;
-        if($scope.selectedDatabase != 'no'){
-            //$scope.resetBox01();
-            $scope.getRevenue();
-            $scope.box01();
-            $scope.box02();
-        }
-    }
-    
-    $scope.changeClient = function(){
-        if($scope.selectedClient != 'no'){
-           $scope.getDatabases();
-        }
-    }
-    
-    
-    $scope.refresh = function(){
-        $scope.updateGraph = false;
-        $scope.box01();
-        setTimeout(function(){
-            $('#refresh').toggleClass("active");
-        },1500);
-    }
-    
-    $scope.refreshEach = function(lapseTime, txt){
-        
-        clearInterval($scope.idInterval);
-        $scope.idInterval = setInterval(function(){
-            $scope.updateGraph = false;
-            $scope.box01();
-        },(lapseTime*1000));
-        $('#eachTxt').html('Actualizar cada: '+txt);
-        
-    }
-    
-    $scope.eachEnable = function(){
-    
-        if(!$scope.eachSelectDisable){
-            $scope.eachSelectDisable = true;
-        }else{
-            $('#eachTxt').html('Actualizar cada: ');
-            $scope.eachSelectDisable = false;
-            clearInterval($scope.idInterval);
-        }
-    
-    }
-    
-    $scope.changeDateBox02 = function(){
-        $scope.box02();
-    }
-    
-    $scope.getRevenue();
-    $scope.getDatabases();
-    $scope.box01();
-    $scope.box02();
+    //}
+
     $scope.test();
     
     

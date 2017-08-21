@@ -1,0 +1,45 @@
+angular.module('app').directive('paginator',[function(){
+    return {
+        templateUrl: 'angular/directives/paginator-paginator.html',
+        restrict: 'E',
+        scope: {
+            elementsByPage: '=',
+            onPage:'=',
+            totalElements: '='
+        },
+        link: function($scope, $element, $attrs){
+
+            $scope.classActive = function(page){
+                return ($scope.onPage == page);
+            }
+
+            $scope.setOnPage = function(onPage){
+                $scope.onPage = onPage;
+            }
+            
+            $scope.pages = function(){
+
+                var input = [];
+                for (var i = 1; i <= $scope.mount_pages; i += 1){
+                    input.push(i);
+                }
+                return(input);
+            }
+
+            $scope.init = function(){
+
+                $scope.totalElements    = $scope.totalElements  || 0;
+                $scope.elementsByPage   = $scope.elementsByPage || 1;
+                $scope.onPage           = $scope.onPage         || 1;
+
+                $scope.mount_pages = Math.ceil($scope.totalElements/$scope.elementsByPage);
+
+                //console.log($scope.elementsByPage, $scope.actualPage, $scope.totalElements, $scope.pages);    
+            }
+            $scope.init();
+
+
+            
+        }
+    };
+}]);

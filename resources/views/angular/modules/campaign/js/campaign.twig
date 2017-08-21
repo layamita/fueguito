@@ -1,15 +1,17 @@
 'use strict';
-
-app.controller('CampaignCtrl', ['$scope', '$state', '$http', 'APIService',
-                        function( $scope,   $state,   $http, APIService) {
+//APIService
+app.controller('CampaignCtrl', ['$scope', '$state', '$http',
+                        function( $scope,   $state,   $http) {
     
     $scope.varSelect = '123';
 
+    $scope.onPage = 1;
+
     $scope.changeValue = function(){
 
-        alert($scope.varSelect);
-        console.log($scope.varSelect);
-        $scope.varSelect = $scope.varSelect;
+        //alert($scope.varSelect);
+        //console.log($scope.varSelect);
+        //$scope.varSelect = $scope.varSelect;
     }
 
     
