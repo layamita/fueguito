@@ -7,7 +7,30 @@ app.controller('CampaignCtrl', ['$scope', '$state', '$http',
 
     $scope.onPage = 3;
 
-    $scope.list = {itemsByPage:10, pagesByRotatore:10, onPage:1,totalItems:211}
+    $scope.list = {itemsByPage:10, totalItems:211}
+
+    $scope.list.header      = {};
+    $scope.list.table       = {};
+    $scope.list.items       = [];
+    
+    //Header Config
+    $scope.list.header.title = "Campaigns";
+
+    //Table Head Config
+    $scope.list.table.head = [];
+    $scope.list.table.head.push({key:'id',name:'ID'});
+    $scope.list.table.head.push({key:'name',name:'Name'});
+    $scope.list.table.head.push({key:'budget_daily',name:'B. Daily'});
+    $scope.list.table.head.push({key:'budget_total',name:'B. Total'});
+
+    //Items Config
+    $scope.list.items.push({id:1,name:'Name1',budget_daily:10,budget_total:50});
+    $scope.list.items.push({id:2,name:'Name2',budget_daily:11,budget_total:51});
+
+    //Paginator Config
+    $scope.list.table.paginator = {};
+    $scope.list.table.paginator.pagesByRotatore = 5;
+    $scope.list.table.paginator.onPage = 1;
 
     $scope.changeValue = function(){
 
@@ -16,7 +39,7 @@ app.controller('CampaignCtrl', ['$scope', '$state', '$http',
         //$scope.varSelect = $scope.varSelect;
     }
 
-    $scope.changePage = function(){
+    $scope.list.table.paginator.changePage = function(){
         console.log('Pagina: '+$scope.list.onPage);
     }
 

@@ -1,0 +1,14 @@
+angular.module('app').directive('fgHeader',[function(){
+    return {
+        templateUrl: 'angular/directives/table-header.html',
+        restrict: 'E',
+        scope: {
+            title:     '=',
+        },
+        link: function($scope, $element, $attrs){
+
+            console.log("22222");
+            
+        }
+    };
+}]);

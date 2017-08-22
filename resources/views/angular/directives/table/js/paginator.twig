@@ -1,6 +1,6 @@
-angular.module('app').directive('paginator',[function(){
+angular.module('app').directive('fgPaginator',[function(){
     return {
-        templateUrl: 'angular/directives/paginator-paginator.html',
+        templateUrl: 'angular/directives/table-paginator.html',
         restrict: 'E',
         scope: {
             onChangePage:    '&',
@@ -10,8 +10,6 @@ angular.module('app').directive('paginator',[function(){
             pagesByRotatore: '='
         },
         link: function($scope, $element, $attrs){
-
-            $scope.onChangePage();
 
             $scope.changed = function(){
                 $scope.onChangePage();

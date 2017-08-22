@@ -1,0 +1,13 @@
+<table class="table table-bordered table-striped table-condensed flip-content">
+    <thead class="flip-content">
+        <tr>
+            <th ng-repeat="head in heads">{{'{{head.name}}'}}</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in items">
+            <td ng-repeat="n in heads">{{'{{item[n.key]}}'}}</td>
+        </tr>
+    </tbody>
+</table>

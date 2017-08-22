@@ -85,7 +85,9 @@ mix.scripts([
     //Directives
     'resources/views/angular/directives/directives.twig',
     'resources/views/angular/directives/selectHttp.twig',
-    'resources/views/angular/directives/paginator/js/paginator.twig',
+    'resources/views/angular/directives/table/js/paginator.twig',
+    'resources/views/angular/directives/table/js/table.twig',
+    'resources/views/angular/directives/table/js/header.twig',
     //Interceptors
     
     //Controllers
