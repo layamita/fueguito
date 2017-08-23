@@ -1,36 +1,46 @@
 'use strict';
 //APIService
-app.controller('CampaignCtrl', ['$scope', '$state', '$http',
-                        function( $scope,   $state,   $http) {
+app.controller('CampaignCtrl', ['$scope', '$state', '$http', 'fgDataServiceTable',
+                        function( $scope,   $state,   $http,  fgDataServiceTable) {
     
+    var items = [
+        {id:1,name:'Name1',budget_daily:10,budget_total:50},
+        {id:2,name:'Name2',budget_daily:11,budget_total:51}
+    ];
+
+    var heads = [
+        {key:'id',name:'ID'},
+        {key:'name',name:'name'},
+        {key:'budget_daily',name:'B. Daily'},
+        {key:'budget_total',name:'B. Total'}
+    ];
+
     $scope.varSelect = '123';
+    $scope.list = {items:[]};
 
-    $scope.onPage = 3;
-
-    $scope.list = {itemsByPage:10, totalItems:211}
-
-    $scope.list.header      = {};
-    $scope.list.table       = {};
-    $scope.list.items       = [];
+    fgDataServiceTable.setTotalItems(211);
+    $scope.list.totalItems = fgDataServiceTable.getTotalItems();
+    fgDataServiceTable.setItemsByPage(10);
+    $scope.list.itemsByPage = fgDataServiceTable.getItemsByPage();
     
-    //Header Config
-    $scope.list.header.title = "Campaigns";
-
-    //Table Head Config
-    $scope.list.table.head = [];
-    $scope.list.table.head.push({key:'id',name:'ID'});
-    $scope.list.table.head.push({key:'name',name:'Name'});
-    $scope.list.table.head.push({key:'budget_daily',name:'B. Daily'});
-    $scope.list.table.head.push({key:'budget_total',name:'B. Total'});
-
-    //Items Config
-    $scope.list.items.push({id:1,name:'Name1',budget_daily:10,budget_total:50});
-    $scope.list.items.push({id:2,name:'Name2',budget_daily:11,budget_total:51});
+    //Title Config
+    fgDataServiceTable.header.title.set('Campaigns');
+    $scope.list.title = fgDataServiceTable.header.title.get();
+    
+    //Table Header config
+    fgDataServiceTable.table.head.add(heads);
+    $scope.list.head = fgDataServiceTable.table.head.get();
 
     //Paginator Config
-    $scope.list.table.paginator = {};
-    $scope.list.table.paginator.pagesByRotatore = 5;
-    $scope.list.table.paginator.onPage = 1;
+    //fgDataServiceTable.table.paginator.setPagesByRotatore(10);
+    $scope.list.pagesByRotatore = fgDataServiceTable.table.paginator.getPagesByRotatore();
+    //fgDataServiceTable.table.paginator.setOnPage(2);
+    $scope.list.onPage = fgDataServiceTable.table.paginator.getOnPage();
+   
+
+    //Items Config
+    fgDataServiceTable.items.add(items);
+    $scope.list.items = fgDataServiceTable.items.get();
 
     $scope.changeValue = function(){
 
@@ -39,11 +49,11 @@ app.controller('CampaignCtrl', ['$scope', '$state', '$http',
         //$scope.varSelect = $scope.varSelect;
     }
 
-    $scope.list.table.paginator.changePage = function(){
+    $scope.list.changePage = function(){
         console.log('Pagina: '+$scope.list.onPage);
+        
     }
 
-    
     $scope.init = function(){
        
     }

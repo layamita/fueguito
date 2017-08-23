@@ -77,6 +77,7 @@ mix.scripts([
     'resources/views/angular/services/services/models/user.twig',
     //Services - Providers
     'resources/views/angular/services/provider/callApi.twig',
+    'resources/views/angular/services/services/table.twig',
     //Config
     'resources/views/angular/config/router.twig',
     'resources/views/angular/config/config.twig',
